@@ -1,0 +1,30 @@
+category
+
+GET - /api/category
+GET - /api/category/:id
+POST - /api/category                // body - { name }
+
+brand
+
+GET - /api/brands
+GET - /api/brands/:id
+POST - /api/brands                  // body - { name }
+
+models
+
+GET - /api/brands/:id/models 
+GET - /api/brands/:id/models/:id
+POST - /api/brands/:id/models       // body - { name, categoryId }
+
+products
+
+GET - /api/products
+GET - /api/products/:id
+POST - /api/products                // body - { userId, color, price, modelId, pictures }
+
+users
+
+POST - /api/users/login             // body - { email, password } temporary route returns user object 
+POST - /api/users/register          // body - { name, email, password }
+GET - /api/users/mylistings
+
