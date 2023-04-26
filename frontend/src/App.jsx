@@ -1,5 +1,20 @@
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Navbar from "./components/Navbar"; 
+import Appbar from "./components/Appbar";
+import Sellit from "./pages/Sellit";
+import "./index.css";
+
 function App() {
-  return <div>Hello world</div>;
+  return (
+    <>
+    <Navbar></Navbar>
+      <Home></Home>
+      <Products></Products>
+      <Sellit></Sellit>
+      <Appbar></Appbar>
+    </>
+  );
 }
 
 export default App;
