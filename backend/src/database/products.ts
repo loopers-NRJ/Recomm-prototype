@@ -25,7 +25,6 @@ export const createProduct = async (
   userId: string,
   modelId: string,
   price: number,
-  color: string,
   images: string[]
 ) => {
   // not optimized yet
@@ -56,7 +55,6 @@ export const createProduct = async (
           id: user.id,
         },
       },
-      color,
       price,
       pictures: images,
     },
