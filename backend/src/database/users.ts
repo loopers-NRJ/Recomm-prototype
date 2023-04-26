@@ -27,3 +27,15 @@ export const getMyListings = async (userId: string) => {
   });
   return response;
 };
+
+export const getUser = async (email: string, password: string) => {
+  const response = await client.user.findUnique({
+    where: {
+      email,
+    },
+  });
+  if (!response) return new Error("User not found");
+  const isPasswordCorrect = await bcrypt.compare(password, response.password);
+  if (!isPasswordCorrect) return new Error("Incorrect password");
+  return response;
+};

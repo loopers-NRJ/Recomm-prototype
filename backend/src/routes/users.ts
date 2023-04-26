@@ -1,11 +1,14 @@
 import { Router } from "express";
-import { createUser, getMyListings } from "../database/users";
+import { createUser, getMyListings, getUser } from "../database/users";
 
 const router = Router();
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  res.json({ email, password });
+  const user = await getUser(email, password);
+  if (user instanceof Error)
+    return res.status(400).json({ error: user.message });
+  res.json(user);
 });
 
 router.post("/register", async (req, res) => {
