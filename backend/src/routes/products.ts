@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage, limits: { fileSize: 1000000 } });
+const upload = multer({ storage });
 
 const router = Router();
 
@@ -34,20 +34,22 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", upload.array("pictures", 5), async (req, res) => {
-  const { userId, color, price, modelId } = req.body;
+  const { userId, price, modelId } = req.body;
   if (!req.files)
     return res.status(400).json({ error: "No files were uploaded." });
   if (!Array.isArray(req.files))
     return res.status(400).json({ error: "Files must be an array." });
   // remove the public/ from the path
-  const pictures = req.files.map((file) => file.path.replace("public/", ""));
+  const pictures = req.files.map((file) =>
+    file.path.replace("\\\\", "\\").replace("public\\", "")
+  );
   if (pictures.length === 0)
     return res.status(400).json({ error: "No files were uploaded." });
 
   if (Number.isNaN(+price))
     return res.status(400).json({ error: "Price must be a number." });
 
-  const product = await createProduct(userId, modelId, +price, color, pictures);
+  const product = await createProduct(userId, modelId, +price, pictures);
   if (product instanceof Error)
     return res.status(400).json({ error: product.message });
   res.json(product);
