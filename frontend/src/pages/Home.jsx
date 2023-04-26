@@ -1,4 +1,3 @@
-
 import Welcome from "../components/Welcome";
 import Advertisement from "../components/Advertisement";
 import SimpleProductGrid from "../components/SimpleProductGrid";
@@ -14,9 +13,7 @@ function Home() {
       <SimpleProductGrid></SimpleProductGrid>
 
       <div className="d-flex p-3 gap-3 container-fluid">
-        <button href={Products} className="wish btn btn-success w-50 px-3 py-2">
-          Wish it
-        </button>
+        <button className="wish btn btn-success w-50 px-3 py-2">Wish it</button>
         <button className="sell btn btn-warning w-50 px-3 py-2">Sell it</button>
       </div>
     </div>
