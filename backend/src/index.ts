@@ -6,6 +6,7 @@ import brands from "./routes/brands";
 import category from "./routes/category";
 import products from "./routes/products";
 import users from "./routes/users";
+import errorHandler from "./middlewares/errorHandler";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+app.use(errorHandler);
 app.get("/", (req, res) => {
   res.send("Recomm Prototype API");
 });
