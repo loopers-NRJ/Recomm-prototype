@@ -20,7 +20,7 @@ products
 
 GET - /api/products
 GET - /api/products/:id
-POST - /api/products                // body - { userId, color, price, modelId, pictures }
+POST - /api/products                // body - { userId, price, modelId, pictures }
 
 users
 
