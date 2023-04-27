@@ -1,0 +1,34 @@
+.welcome>h1, .amount{
+    line-height: 1;
+    margin: 0;
+}
+
+.card-text {
+    font-size: small;
+    line-height: 1;
+    margin: 0;
+}
+
+.card.prod {
+    max-width: 160px;
+    aspect-ratio: 1/1;
+    font-weight: bold;
+    color: black;
+    background-color: slategray;
+}
+
+.card-image {
+    height: 70%;
+    object-fit: cover;
+}
+
+.hot::before{
+    content: "HOT";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    color: white;
+    padding: 0.25rem;
+    font-size: small;
+}
