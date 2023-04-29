@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
   res.json(user);
 });
 
-router.get("/mylistings", async (req, res) => {
+router.post("/mylistings", async (req, res) => {
   const { userId } = req.body;
   const listings = await getMyListings(userId);
   res.json(listings);

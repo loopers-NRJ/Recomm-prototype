@@ -26,5 +26,5 @@ users
 
 POST - /api/users/login             // body - { email, password } temporary route returns user object 
 POST - /api/users/register          // body - { name, email, password }
-GET - /api/users/mylistings
+POST - /api/users/mylistings        // body - { userId }
 

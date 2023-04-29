@@ -24,6 +24,14 @@ export const getMyListings = async (userId: string) => {
     where: {
       userId,
     },
+    include: {
+      model: {
+        include: {
+          brand: true,
+          category: true,
+        },
+      },
+    },
   });
   return response;
 };

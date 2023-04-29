@@ -1,8 +1,8 @@
-const API = "localhost:5000/api";
+export const API = "http://172.31.240.1:5000/";
 
 export const get = async (url) => {
   try {
-    const response = await fetch(API + url, {
+    const response = await fetch(API + "api/" + url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -12,13 +12,14 @@ export const get = async (url) => {
     if (!response.ok) return new Error(data?.error);
     return data;
   } catch (error) {
+    console.log(error);
     return error;
   }
 };
 
 export const post = async (url, params) => {
   try {
-    const response = await fetch(API + url, {
+    const response = await fetch(API + "api/" + url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,6 +30,22 @@ export const post = async (url, params) => {
     if (!response.ok) return new Error(data?.error);
     return data;
   } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const formPost = async (url, formData) => {
+  try {
+    const response = await fetch(API + "api/" + url, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    if (!response.ok) return new Error(data?.error);
+    return data;
+  } catch (error) {
+    console.log(error);
     return error;
   }
 };

@@ -1,11 +1,15 @@
-import { get, post } from "./http";
+import { formPost, get, post } from "./http";
 
 export const getCategory = async () => {
-  return get("/category");
+  return get("category");
+};
+
+export const getCategoryById = async (id) => {
+  return get(`category/${id}`);
 };
 
 export const getProducts = async () => {
-  return get("/products");
+  return get("products");
 };
 
 export const getProductsByCategory = async (categoryId) => {
@@ -17,25 +21,29 @@ export const getBrandsByCategory = async (categoryId) => {
 };
 
 export const getBrands = async () => {
-  return get("/brands");
+  return get("brands");
 };
 
-export const getProductsByBrand = async (brandId) => {
-  return get(`brands/${brandId}/products`);
+export const getModelsByBrand = async (brandId) => {
+  return get(`brands/${brandId}/models`);
 };
 
 export const getProduct = async (productId) => {
-  return get(`/products/${productId}`);
+  return get(`products/${productId}`);
 };
 
 export const signup = async (email, name, password) => {
-  return post("/users/register", { email, name, password });
+  return post("users/register", { email, name, password });
 };
 
 export const login = async (email, password) => {
-  return post("/users/login", { email, password });
+  return post("users/login", { email, password });
 };
 
 export const getMyListings = async (userId) => {
-  return post("/users/mylistings", { userId });
+  return post("users/mylistings", { userId });
+};
+
+export const createProduct = async (product) => {
+  return formPost("products", product);
 };

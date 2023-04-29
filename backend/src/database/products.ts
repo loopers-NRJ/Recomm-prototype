@@ -8,6 +8,13 @@ export const getProducts = async () => {
 export const getProduct = async (id: string) => {
   const response = await client.product.findUnique({
     where: { id },
+    include: {
+      model: {
+        include: {
+          brand: true,
+        },
+      },
+    },
   });
   return response;
 };

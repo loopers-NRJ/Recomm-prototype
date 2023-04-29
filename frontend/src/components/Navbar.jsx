@@ -49,7 +49,7 @@ function Navbar() {
                   Link
                 </a>
               </li>
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -79,9 +79,9 @@ function Navbar() {
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
-            <form className="d-flex mt-3" role="search">
+            {/* <form className="d-flex mt-3" role="search">
               <input
                 className="form-control me-2"
                 type="search"
@@ -91,7 +91,7 @@ function Navbar() {
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
       </div>

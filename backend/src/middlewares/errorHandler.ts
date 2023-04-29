@@ -6,6 +6,6 @@ const errorHandler = (
   next: NextFunction
 ) => {
   console.error(error);
-  res.status(500).json({ message: "Something went wrong" });
+  res.status(500).json({ error: "Something went wrong" });
 };
 export default errorHandler;

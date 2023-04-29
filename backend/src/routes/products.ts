@@ -22,17 +22,6 @@ const upload = multer({ storage });
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-  const products = await getProducts();
-  res.json(products);
-});
-
-router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  const product = await getProduct(id);
-  res.json(product);
-});
-
 router.post("/", upload.array("pictures", 5), async (req, res) => {
   const { userId, price, modelId } = req.body;
   if (!req.files)
@@ -52,6 +41,17 @@ router.post("/", upload.array("pictures", 5), async (req, res) => {
   const product = await createProduct(userId, modelId, +price, pictures);
   if (product instanceof Error)
     return res.status(400).json({ error: product.message });
+  res.json(product);
+});
+
+router.get("/", async (req, res) => {
+  const products = await getProducts();
+  res.json(products);
+});
+
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const product = await getProduct(id);
   res.json(product);
 });
 

@@ -30,34 +30,28 @@ export const getProductsByCategory = async (id: string) => {
         categoryId: id,
       },
     },
+    include: {
+      model: {
+        include: {
+          brand: true,
+          category: true,
+        },
+      },
+    },
   });
   return products;
 };
 
 export const getBrandsByCategory = async (id: string) => {
-  const products = await client.product.findMany({
+  const brands = await client.brand.findMany({
     where: {
-      model: {
-        categoryId: id,
-      },
-    },
-    include: {
-      model: {
-        include: {
-          brand: true,
+      models: {
+        some: {
+          categoryId: id,
         },
       },
     },
   });
-  // not optimized but works
-  const hashSet = new Set<string>();
-  const brands = products
-    .filter((product) =>
-      hashSet.has(product.model.brand.id)
-        ? false
-        : hashSet.add(product.model.brand.id)
-    )
-    .map((product) => product.model.brand);
 
   return brands;
 };
