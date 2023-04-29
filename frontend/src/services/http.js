@@ -1,4 +1,4 @@
-export const API = "http://172.31.240.1:5000/";
+export const API = "http://localhost:5000/";
 
 export const get = async (url) => {
   try {
